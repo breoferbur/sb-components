@@ -46,5 +46,13 @@ export const CustomFontColor = Template.bind({})
 CustomFontColor.args = {
     label: 'Custom font color label',
     size: 'h1',
-    fontColor: '#5517ac'
+    fontColor: '#5517ac',
+}
+
+export const CustomBackgroundColor = Template.bind({})
+CustomBackgroundColor.args = {
+    label: 'Custom background color label',
+    size: 'h1',
+    fontColor: '#eeeeee',
+    backgroundColor: '#000000',
 }

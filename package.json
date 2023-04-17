@@ -1,7 +1,27 @@
 {
-  "name": "my-storybook",
+  "name": "bfb-my-storybook-components",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
+  "typings": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "repository": {
+    "url": "https://github.com/breoferbur/sb-components",
+    "type": "git"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "peerDependencies": {
+    "react": ">=16",
+    "typescrpt": ">=4.0.0"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -17,10 +37,12 @@
   },
   "scripts": {
     "start": "storybook dev -p 6006",
-    "build": "react-scripts build",
+    "build": "yarn clean && tsc && yarn copy-files",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=f5c24aa9984e"
+    "chromatic": "npx chromatic --project-token=f5c24aa9984e",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/**/*.css dist/"
   },
   "eslintConfig": {
     "extends": [
@@ -51,9 +73,20 @@
     "@storybook/react-webpack5": "7.0.4",
     "@storybook/testing-library": "0.0.14-next.2",
     "chromatic": "^6.17.3",
+    "copyfiles": "^2.4.1",
     "prop-types": "15.8.1",
+    "rimraf": "^5.0.0",
+    "semantic-release": "^21.0.1",
     "storybook": "7.0.4"
   },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "@semantic-release/npm",
+    "@semantic-release/git"
+  ],
   "readme": "ERROR: No README data found!",
   "_id": "my-storybook@0.1.0"
 }
